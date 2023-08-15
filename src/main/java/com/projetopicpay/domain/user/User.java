@@ -1,5 +1,6 @@
 package com.projetopicpay.domain.user;
 
+import com.projetopicpay.dtos.UserDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,4 +28,13 @@ public class User {
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(UserDto data) {
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.balance = data.balance();
+        this.userType = data.usertype();
+        this.password = data.password();
+        this.email = data.email();
+    }
 }

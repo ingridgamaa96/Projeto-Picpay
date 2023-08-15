@@ -2,11 +2,13 @@ package com.projetopicpay.services;
 
 import com.projetopicpay.domain.user.User;
 import com.projetopicpay.domain.user.UserType;
+import com.projetopicpay.dtos.UserDto;
 import com.projetopicpay.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class UserServices {
@@ -27,7 +29,16 @@ public class UserServices {
         return this.repository.findUserById(id).orElseThrow(() -> new Exception("usuario não entrado"));
     }
 
-    public void saveUser(User user) {
+    public User createUser(UserDto data){
+        User newUser = new User(data);
+        this.saveUser(newUser);
+        return newUser;
+    }
+
+    public List<User> getAllUsers(){
+        return this.repository.findAll();
+    }
+        public void saveUser(User user) {
         this.repository.save(user);
     }
 }

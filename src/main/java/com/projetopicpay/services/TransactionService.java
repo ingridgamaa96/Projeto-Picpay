@@ -42,6 +42,14 @@ public class TransactionService {
         newtransaction.setSender(sender);
         newtransaction.setReceiver(receiver);
         newtransaction.setTimestamp(LocalDateTime.now());
+
+
+        sender.setBalance(sender.getBalance().subtract(transaction.value()));
+        receiver.setBalance(receiver.getBalance().add(transaction.value()));
+
+        this.TransactionRepository.save(newtransaction);
+        this.userServices.saveUser(sender);
+        this.userServices.saveUser(receiver);
     }
     public boolean authorizeTransaction (User sender, BigDecimal value) {
       ResponseEntity <Map> autorizationResponse = restTemplate.getForEntity(  "https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6", Map.class);
