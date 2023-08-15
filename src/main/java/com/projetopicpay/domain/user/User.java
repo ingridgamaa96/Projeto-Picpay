@@ -1,10 +1,7 @@
 package com.projetopicpay.domain.user;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -14,10 +11,12 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode(of="id")
+@NoArgsConstructor
+
 public class User {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY);
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
