@@ -17,15 +17,12 @@ public class UserController {
    @Autowired
    private UserServices userServices;
 
-
-
     @PostMapping
     public ResponseEntity<User> createUser (@RequestBody UserDto user){
         User newUser = userServices.createUser(user);
         return new ResponseEntity<>(newUser , HttpStatus.CREATED);
 
     }
-
     @GetMapping
     public  ResponseEntity<List<User>> getAllUsers(){
         List<User> users = this.userServices.getAllUsers();
