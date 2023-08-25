@@ -1,4 +1,4 @@
-# projeto PicPay
+# Projeto-Picpay
 
 Desafio Back-end PicPay
 
